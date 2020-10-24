@@ -27,6 +27,5 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
     
     // https://mvnrepository.com/artifact/com.opencsv/opencsv
-    compile group: 'com.opencsv', name: 'opencsv', version: '4.3'	
-}
+    compile group: 'com.opencsv', name: 'opencsv', version: '4.3'
 }

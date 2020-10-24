@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import com.indianStateCensus.CSVBuilderException;
 import com.indianStateCensus.CensusAnalyser;
 import com.indianStateCensus.CensusAnalyserException;
 
@@ -20,9 +21,10 @@ public class CensusAnalyserTest {
 	 * UC1TestCase1
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenCSVFile_IfMatchNumberOfRecords_ShouldReturnTrue() throws IOException {
+	public void givenCSVFile_IfMatchNumberOfRecords_ShouldReturnTrue() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		int count = 0;
 		try {
@@ -36,9 +38,10 @@ public class CensusAnalyserTest {
 	 * UC1TestCase2
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenCSVFile_IfWrongFile_ShouldThrowError() throws IOException {
+	public void givenCSVFile_IfWrongFile_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadCSVData(WRONG_FILE);
@@ -52,9 +55,10 @@ public class CensusAnalyserTest {
 	 * UC1TestCase3
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenCSVFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError() throws IOException {
+	public void givenCSVFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadCSVData(WRONG_EXTENSION);
@@ -68,9 +72,10 @@ public class CensusAnalyserTest {
 	 * UC1TestCase4
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenCSVFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError() throws IOException {
+	public void givenCSVFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadCSVData(STATECENSUS_CSVFILE);
@@ -84,9 +89,10 @@ public class CensusAnalyserTest {
 	 * UC1TestCase5
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenCSVFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError() throws IOException {
+	public void givenCSVFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadCSVData(CSVFILE);
@@ -98,9 +104,10 @@ public class CensusAnalyserTest {
 
 	/**UC2TestCase1
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenStateFile_IfMatchNumberOfRecords_ShouldReturnTrue() throws IOException {
+	public void givenStateFile_IfMatchNumberOfRecords_ShouldReturnTrue() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(STATE_CODE_CSV);
@@ -112,9 +119,10 @@ public class CensusAnalyserTest {
 	 * UC2TestCase2
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenStateFile_IfWrongFile_ShouldThrowError() throws IOException {
+	public void givenStateFile_IfWrongFile_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(WRONG_FILE);
@@ -128,9 +136,10 @@ public class CensusAnalyserTest {
 	 * UC2TestCase3
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenStateFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError() throws IOException {
+	public void givenStateFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(WRONG_EXTENSION);
@@ -144,9 +153,10 @@ public class CensusAnalyserTest {
 	 * UC2TestCase4
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenStateFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError() throws IOException {
+	public void givenStateFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(CSVFILE);
@@ -160,9 +170,10 @@ public class CensusAnalyserTest {
 	 * UC2TestCase5
 	 * 
 	 * @throws IOException
+	 * @throws CSVBuilderException 
 	 */
 	@Test
-	public void givenStateFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError() throws IOException {
+	public void givenStateFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(CSVFILE);
