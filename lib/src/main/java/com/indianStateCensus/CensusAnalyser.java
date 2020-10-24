@@ -17,8 +17,9 @@ public class CensusAnalyser {
 	public int loadCSVData(String csvFile) throws CensusAnalyserException, IOException {
 		try {
 			Reader reader = Files.newBufferedReader(Paths.get(csvFile));
-			Iterator<CSVStateCensus> censusIterator = new OpenCSVBuilder().getCSVFileIterator(reader,
-															CSVStateCensus.class);
+			@SuppressWarnings("unchecked")
+			ICSVBuilder<CSVStateCensus> csvBuilder = CSVBuilderFactory.createCSVBuilder();
+			Iterator<CSVStateCensus> censusIterator = csvBuilder.getCSVFileIterator(reader,CSVStateCensus.class);
 			return this.getCount(censusIterator);
 		} catch (RuntimeException e) {
 			throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.INCORRECT_FILE);
@@ -30,7 +31,8 @@ public class CensusAnalyser {
 	public int loadIndianStateCode(String csvFile) throws IOException, CensusAnalyserException {
 		try {
 			Reader reader = Files.newBufferedReader(Paths.get(csvFile));
-			Iterator<StateCodeCSV> censusIterator = new OpenCSVBuilder().getCSVFileIterator(reader, StateCodeCSV.class);
+			ICSVBuilder<StateCodeCSV> csvBuilder = CSVBuilderFactory.createCSVBuilder();
+			Iterator<StateCodeCSV> censusIterator = csvBuilder.getCSVFileIterator(reader, StateCodeCSV.class);
 			return this.getCount(censusIterator);
 		} catch (RuntimeException e) {
 			throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.INCORRECT_FILE);
