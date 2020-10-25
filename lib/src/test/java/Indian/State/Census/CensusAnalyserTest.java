@@ -11,6 +11,7 @@ import com.indianStateCensus.CSVBuilderException;
 import com.indianStateCensus.CSVStateCensus;
 import com.indianStateCensus.CensusAnalyser;
 import com.indianStateCensus.CensusAnalyserException;
+import com.indianStateCensus.StateCodeCSV;
 
 public class CensusAnalyserTest {
 	private static final String STATECENSUS_CSVFILE = "C:\\Users\\adity\\eclipse-workspace\\Indian State Census\\IndiaStateCensusData.csv";
@@ -230,4 +231,37 @@ public class CensusAnalyserTest {
 		assertEquals("West Bengal", censusCSV[censusCSV.length - 1].state);
 	}
 
+	/**
+	 * TestCase for Usecase4 Sorting StateCode CSV File data
+	 * 
+	 * @throws IOException
+	 * @throws CensusAnalyserException
+	 * @throws CSVBuilderException
+	 */
+	@Test
+	public void givenIndianCensusData_WhenSortedOnStateCode_ShouldReturnSortedResult()
+			throws IOException, CensusAnalyserException, CSVBuilderException {
+		CensusAnalyser analyser = new CensusAnalyser();
+		analyser.loadIndianStateCode(STATE_CODE_CSV);
+		String sortedCensusData = analyser.getStateCodeWiseSortedCensusData();
+		StateCodeCSV[] censusCSV = new Gson().fromJson(sortedCensusData, StateCodeCSV[].class);
+		assertEquals("Andhra Pradesh New", censusCSV[0].state);
+	}
+
+	/**
+	 * TestCase for Usecase4 Sorting StateCode CSV File data
+	 * 
+	 * @throws IOException
+	 * @throws CensusAnalyserException
+	 * @throws CSVBuilderException
+	 */
+	@Test
+	public void givenIndianCensusData_WhenSortedOnStateCode_ShouldReturnSortedResultForLastState()
+			throws IOException, CensusAnalyserException, CSVBuilderException {
+		CensusAnalyser analyser = new CensusAnalyser();
+		analyser.loadIndianStateCode(STATE_CODE_CSV);
+		String sortedCensusData = analyser.getStateCodeWiseSortedCensusData();
+		StateCodeCSV[] censusCSV = new Gson().fromJson(sortedCensusData, StateCodeCSV[].class);
+		assertEquals("West Bengal", censusCSV[censusCSV.length - 1].state);
+	}
 }
