@@ -6,7 +6,9 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import com.google.gson.Gson;
 import com.indianStateCensus.CSVBuilderException;
+import com.indianStateCensus.CSVStateCensus;
 import com.indianStateCensus.CensusAnalyser;
 import com.indianStateCensus.CensusAnalyserException;
 
@@ -21,7 +23,7 @@ public class CensusAnalyserTest {
 	 * UC1TestCase1
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
 	public void givenCSVFile_IfMatchNumberOfRecords_ShouldReturnTrue() throws IOException, CSVBuilderException {
@@ -30,15 +32,16 @@ public class CensusAnalyserTest {
 		try {
 			count = analyser.loadCSVData(STATECENSUS_CSVFILE);
 			System.out.println(count);
-		} catch (CensusAnalyserException e) {}
-		assertEquals(29, count);
+			assertEquals(29, count);
+		} catch (CensusAnalyserException e) {
+		}
 	}
 
 	/**
 	 * UC1TestCase2
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
 	public void givenCSVFile_IfWrongFile_ShouldThrowError() throws IOException, CSVBuilderException {
@@ -55,10 +58,11 @@ public class CensusAnalyserTest {
 	 * UC1TestCase3
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
-	public void givenCSVFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
+	public void givenCSVFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError()
+			throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadCSVData(WRONG_EXTENSION);
@@ -72,10 +76,11 @@ public class CensusAnalyserTest {
 	 * UC1TestCase4
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
-	public void givenCSVFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
+	public void givenCSVFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError()
+			throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadCSVData(STATECENSUS_CSVFILE);
@@ -89,10 +94,11 @@ public class CensusAnalyserTest {
 	 * UC1TestCase5
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
-	public void givenCSVFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
+	public void givenCSVFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError()
+			throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadCSVData(CSVFILE);
@@ -102,9 +108,11 @@ public class CensusAnalyserTest {
 		}
 	}
 
-	/**UC2TestCase1
+	/**
+	 * UC2TestCase1
+	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
 	public void givenStateFile_IfMatchNumberOfRecords_ShouldReturnTrue() throws IOException, CSVBuilderException {
@@ -113,13 +121,15 @@ public class CensusAnalyserTest {
 			int count = analyser.loadIndianStateCode(STATE_CODE_CSV);
 			System.out.println(count);
 			assertEquals(37, count);
-		} catch (CensusAnalyserException e) {}
+		} catch (CensusAnalyserException e) {
+		}
 	}
+
 	/**
 	 * UC2TestCase2
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
 	public void givenStateFile_IfWrongFile_ShouldThrowError() throws IOException, CSVBuilderException {
@@ -136,10 +146,11 @@ public class CensusAnalyserTest {
 	 * UC2TestCase3
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
-	public void givenStateFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
+	public void givenStateFile_WhenFileCorrect_ButExtensionIncorrect_ShouldThrowError()
+			throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(WRONG_EXTENSION);
@@ -153,10 +164,11 @@ public class CensusAnalyserTest {
 	 * UC2TestCase4
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
-	public void givenStateFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
+	public void givenStateFile_WhenFileCorrect_ButDelimiterIncorrect_ShouldThrowError()
+			throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(CSVFILE);
@@ -170,10 +182,11 @@ public class CensusAnalyserTest {
 	 * UC2TestCase5
 	 * 
 	 * @throws IOException
-	 * @throws CSVBuilderException 
+	 * @throws CSVBuilderException
 	 */
 	@Test
-	public void givenStateFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError() throws IOException, CSVBuilderException {
+	public void givenStateFile_WhenFileCorrect_ButHeaderIncorrect_ShouldThrowError()
+			throws IOException, CSVBuilderException {
 		CensusAnalyser analyser = new CensusAnalyser();
 		try {
 			int count = analyser.loadIndianStateCode(CSVFILE);
@@ -183,5 +196,38 @@ public class CensusAnalyserTest {
 		}
 	}
 
+	/**
+	 * TestCase for Usecase3 for sorting CSV file data
+	 * 
+	 * @throws IOException
+	 * @throws CensusAnalyserException
+	 * @throws CSVBuilderException
+	 */
+	@Test
+	public void givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResult()
+			throws IOException, CensusAnalyserException, CSVBuilderException {
+		CensusAnalyser analyser = new CensusAnalyser();
+		analyser.loadCSVData(STATECENSUS_CSVFILE);
+		String sortedCensusData = analyser.getStateWiseSortedCensusData();
+		CSVStateCensus[] censusCSV = new Gson().fromJson(sortedCensusData, CSVStateCensus[].class);
+		assertEquals("Andhra Pradesh", censusCSV[0].state);
+	}
+
+	/**
+	 * TestCase for Usecase3 for sorting CSV file data
+	 * 
+	 * @throws IOException
+	 * @throws CensusAnalyserException
+	 * @throws CSVBuilderException
+	 */
+	@Test
+	public void givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResultForLastState()
+			throws IOException, CensusAnalyserException, CSVBuilderException {
+		CensusAnalyser analyser = new CensusAnalyser();
+		analyser.loadCSVData(STATECENSUS_CSVFILE);
+		String sortedCensusData = analyser.getStateWiseSortedCensusData();
+		CSVStateCensus[] censusCSV = new Gson().fromJson(sortedCensusData, CSVStateCensus[].class);
+		assertEquals("West Bengal", censusCSV[censusCSV.length - 1].state);
+	}
 
 }
