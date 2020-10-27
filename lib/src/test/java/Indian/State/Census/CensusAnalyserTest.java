@@ -1,21 +1,13 @@
 package Indian.State.Census;
-
-import static org.junit.Assert.assertEquals;
-
-import java.io.FileWriter;
+import static org.junit.Assert.assertEquals; 
 import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import org.junit.Test;
-
+import com.CSVReader.CSVBuilderException;
 import com.google.gson.Gson;
-import com.indianStateCensus.CSVBuilderException;
-import com.indianStateCensus.CSVStateCensus;
-import com.indianStateCensus.CensusAnalyser;
-import com.indianStateCensus.CensusAnalyserException;
-import com.indianStateCensus.StateCodeCSV;
+import com.indian_State_Census.CSVStateCensus;
+import com.indian_State_Census.CensusAnalyser;
+import com.indian_State_Census.CensusAnalyserException;
+import com.indian_State_Census.StateCodeCSV;
 
 public class CensusAnalyserTest {
 	private static final String STATECENSUS_CSVFILE = "C:\\Users\\adity\\eclipse-workspace\\Indian State Census\\IndiaStateCensusData.csv";
